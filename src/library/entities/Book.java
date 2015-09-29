@@ -48,7 +48,6 @@ public class Book implements IBook{
 			//associate loanID with the bookState
 		this.loanID_ = loan;
 		state_ = EBookState.ON_LOAN;
-		
 	}
 
 	
@@ -125,32 +124,32 @@ public class Book implements IBook{
 	}
 
 	
-	//get State
+	//return the book's current State
 	public EBookState getState() {
-		return state_;
+		return this.state_;
 	}
 
 
-	//get Author
+	//return the Book's Author
 	public String getAuthor() {
-		return author_;
+		return this.author_;
 	}
 
 	
-	//get Title
+	//return the Title of the Book
 	public String getTitle() {
-		return title_;
+		return this.title_;
 	}
 
 	
-	//get CallNumber
+	//return the book's Call Number
 	public String getCallNumber() {
-		return callNumber_;
+		return this.callNumber_;
 	}
 
 	
-	//get BookID
+	//return the Book's Unique ID
 	public int getID() {
-		return bookID_;
+		return this.bookID_;
 	}
 }
