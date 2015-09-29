@@ -88,15 +88,19 @@ public class Book implements IBook{
 	}
 
 
-	
+	//setting the book state to Lost if the book is lost
 	public void lose() {
-		// TODO Auto-generated method stub
-		
+		if(!(state_ == EBookState.ON_LOAN)){
+			throw new RuntimeException("Book currently not on loan.");
+		}
+		//if the book is lost, set the state to lost
+		this.state_ = EBookState.LOST;
 	}
+	
 
-	@Override
+	//fix damages to the book)
 	public void repair() {
-		// TODO Auto-generated method stub
+		
 		
 	}
 
