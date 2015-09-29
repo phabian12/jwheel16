@@ -91,26 +91,41 @@ public class Book implements IBook{
 	//setting the book state to Lost if the book is lost
 	public void lose() {
 		if(!(state_ == EBookState.ON_LOAN)){
-			throw new RuntimeException("Book currently not on loan.");
+			throw new RuntimeException("Book is not on loan.");
 		}
 		//if the book is lost, set the state to lost
 		this.state_ = EBookState.LOST;
 	}
 	
 
-	//fix damages to the book)
+	//fix damages to the book
 	public void repair() {
+		if(!(state_ == EBookState.DAMAGED)){
+			throw new RuntimeException("Book is currently undamaged.");
+		}
 		
+		//repair book and set the state to available
+		this.state_ = EBookState.AVAILABLE;
 		
 	}
 
-	@Override
+	
+	//dispose of book if it is not Available
 	public void dispose() {
-		// TODO Auto-generated method stub
-		
+		//if the book isn't Available, or Damaged or Lost
+		//then it can be disposed
+		if(!(state_.equals(EBookState.AVAILABLE)
+				|| state_.equals(EBookState.DAMAGED)
+				|| state_.equals(EBookState.LOST))){
+			throw new RuntimeException("Book is not currently Available or Damaged or Lost.");
+		}
+		//if the book isn't Available or is Damaged, or is Lost
+		//then the state of the book can be declared Disposed
+		this.state_ = EBookState.DISPOSED;
 	}
 
-	@Override
+	
+	
 	public EBookState getState() {
 		// TODO Auto-generated method stub
 		return null;
