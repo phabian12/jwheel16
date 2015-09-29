@@ -15,6 +15,7 @@ public class Book implements IBook{
 	private EBookState state_;
 	private ILoan loanID_;
 	
+	
 	//constructor
 	public Book(String author, String title, String callNumber, int bookID){
 		if (author != null && !author.isEmpty() && 
@@ -33,8 +34,8 @@ public class Book implements IBook{
 		}
 	}
 
-			
-	@Override
+	
+	//borrow book
 	public void borrow(ILoan loan) {
 			//ensuring the value of the loan is not null
 		if (loan == null){
@@ -50,19 +51,44 @@ public class Book implements IBook{
 		
 	}
 
-	@Override
+	
+	//get Loan
 	public ILoan getLoan() {
-		// TODO Auto-generated method stub
-		return null;
+			//checking if the book is on loan
+			//if the book isn't on loan, the null is returned
+		if(!(this.state_.equals(EBookState.ON_LOAN))){
+			return null;
+		}
+			//returns loan information if the book IS on loan
+		return this.loanID_;
 	}
 
-	@Override
+	
+	//return Book 
 	public void returnBook(boolean damaged) {
-		// TODO Auto-generated method stub
+			//if the book is on loan or lost,
+			//then a runtime error will occur
+		if(!(this.state_.equals(EBookState.ON_LOAN) 
+				|| (this.state_.equals(EBookState.LOST)))){
+			throw new RuntimeException ("The Book is not currently on Loan.");
+		}
 		
+		//if there is no current book on loan,
+		//the loan is declared as null
+		loanID_ = null;
+		
+			//if the book is damaged, change the state to "damaged"
+		if (damaged){
+			this.state_ = EBookState.DAMAGED;
+		}
+			// if the book isn't damage, it's declared "available"
+		else {
+			this.state_ = EBookState.AVAILABLE;
+		}
 	}
 
-	@Override
+
+	
 	public void lose() {
 		// TODO Auto-generated method stub
 		
