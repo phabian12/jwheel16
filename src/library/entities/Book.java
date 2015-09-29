@@ -125,34 +125,32 @@ public class Book implements IBook{
 	}
 
 	
-	
+	//get State
 	public EBookState getState() {
-		// TODO Auto-generated method stub
-		return null;
+		return state_;
 	}
 
-	@Override
+
+	//get Author
 	public String getAuthor() {
-		// TODO Auto-generated method stub
-		return null;
+		return author_;
 	}
 
-	@Override
+	
+	//get Title
 	public String getTitle() {
-		// TODO Auto-generated method stub
-		return null;
+		return title_;
 	}
 
-	@Override
+	
+	//get CallNumber
 	public String getCallNumber() {
-		// TODO Auto-generated method stub
-		return null;
+		return callNumber_;
 	}
 
-	@Override
+	
+	//get BookID
 	public int getID() {
-		// TODO Auto-generated method stub
-		return 0;
+		return bookID_;
 	}
-
 }
