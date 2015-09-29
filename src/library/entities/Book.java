@@ -29,15 +29,24 @@ public class Book implements IBook{
 				this.loanID_ = null;
 			}
 		else{
-			throw new IllegalArgumentException("Member: Constructor: Bad Parameters");
+			throw new IllegalArgumentException("Constructor: Bad Parameters");
 		}
 	}
 
 			
 	@Override
 	public void borrow(ILoan loan) {
-		
-		
+			//ensuring the value of the loan is not null
+		if (loan == null){
+			throw new IllegalArgumentException(String.format("Borrow: Bad Parameter: Loan Cannot be Null"));
+		}
+			//throws runtime exception if the book is not available
+		else if(!(this.state_.equals(EBookState.AVAILABLE))){
+			throw new RuntimeException("Book: State: Book is currently unavailable.");
+		}
+			//associate loanID with the bookState
+		this.loanID_ = loan;
+		state_ = EBookState.ON_LOAN;
 		
 	}
 
