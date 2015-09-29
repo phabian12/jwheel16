@@ -17,30 +17,27 @@ public class Book implements IBook{
 	
 	//constructor
 	public Book(String author, String title, String callNumber, int bookID){
-			//checker provides boolean response
-		if (!checker(author, title, callNumber, bookID)){
-				throw new IllegalArgumentException();
+		if (author != null && !author.isEmpty() && 
+			title != null && !title.isEmpty() &&
+			callNumber != null && !callNumber.isEmpty() &&
+			bookID > 0){
+				this.author_ = author;
+				this.title_ = title;
+				this.callNumber_ = callNumber;
+				this.bookID_ = bookID;
+				this.state_ = EBookState.AVAILABLE;
+				this.loanID_ = null;
 			}
-		this.author_ = author;
-		this.title_ = title;
-		this.callNumber_ = callNumber;
-		this.bookID_ = bookID;
-		this.state_ = EBookState.AVAILABLE;
-		this.loanID_ = null;
+		else{
+			throw new IllegalArgumentException("Member: Constructor: Bad Parameters");
 		}
-	
-	//boolean checking the state of the parameters within the constructor
-	private boolean checker(String author, String title, String callNumber, int bookID){
-		return (
-				author != null && !author.isEmpty() && 
-				title != null && !title.isEmpty() &&
-				callNumber != null && !callNumber.isEmpty() &&
-				bookID > 0
-				);
 	}
+
 			
 	@Override
 	public void borrow(ILoan loan) {
+		
+		
 		
 	}
 
