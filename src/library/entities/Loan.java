@@ -28,6 +28,7 @@ public class Loan implements ILoan {
 		this.state_ = ELoanState.PENDING;
 	}
 	
+	
 	private boolean sane(IBook book, IMember borrower, Date borrowDate, Date returnDate) {
 		return  ( book != null && 
 				  borrower != null && 
