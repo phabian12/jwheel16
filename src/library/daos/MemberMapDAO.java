@@ -16,6 +16,8 @@ public class MemberMapDAO implements IMemberDAO {
 	private Map<Integer, IMember> memberMap_;
 	private int nextId_;
 	
+	
+	
 	public MemberMapDAO(IMemberHelper helper) {
 		if (helper == null ) {
 			throw new IllegalArgumentException(
@@ -26,6 +28,7 @@ public class MemberMapDAO implements IMemberDAO {
 		this.nextId_ = 1;
 	}
 
+	
 	public MemberMapDAO(IMemberHelper helper, Map<Integer,IMember> memberMap) {
 		this(helper);
 		if (memberMap == null ) {
@@ -45,6 +48,7 @@ public class MemberMapDAO implements IMemberDAO {
 		return mem;
 	}
 
+	
 	@Override
 	public IMember getMemberByID(int id) {
 		if (memberMap_.keySet().contains(Integer.valueOf(id))) {
@@ -53,12 +57,14 @@ public class MemberMapDAO implements IMemberDAO {
 		return null;
 	}
 
+	
 	@Override
 	public List<IMember> listMembers() {
 		List<IMember> list = new ArrayList<IMember>(memberMap_.values());
 		return Collections.unmodifiableList(list);
 	}
 
+	
 	@Override
 	public List<IMember> findMembersByLastName(String lastName) {
 		if ( lastName == null || lastName.isEmpty()) {
@@ -73,6 +79,7 @@ public class MemberMapDAO implements IMemberDAO {
 		}
 		return Collections.unmodifiableList(list);
 	}
+	
 
 	@Override
 	public List<IMember> findMembersByEmailAddress(String emailAddress) {
@@ -89,6 +96,7 @@ public class MemberMapDAO implements IMemberDAO {
 		return Collections.unmodifiableList(list);
 	}
 
+	
 	@Override
 	public List<IMember> findMembersByNames(String firstName, String lastName) {
 		if ( firstName == null || firstName.isEmpty() || lastName == null || lastName.isEmpty()) {
@@ -104,9 +112,9 @@ public class MemberMapDAO implements IMemberDAO {
 		return Collections.unmodifiableList(list);
 	}
 
+	
+	
 	private int getNextId() {
 		return nextId_++;
 	}
-
-
 }
