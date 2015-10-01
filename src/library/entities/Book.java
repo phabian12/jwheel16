@@ -152,4 +152,11 @@ public class Book implements IBook{
 	public int getID() {
 		return this.bookID_;
 	}
+	
+	/* added during testing
+	needed to be able to manually set the State of a Book 
+	makes testing easier */
+	public void setState(EBookState state){
+		this.state_ = state;
+	}
 }
