@@ -10,14 +10,14 @@ import library.interfaces.daos.IBookDAO;
 import library.interfaces.daos.IBookHelper;
 import library.interfaces.entities.IBook;
 
-public class BookMapDAO implements IBookDAO{
+public class BookDAO implements IBookDAO{
 
 	private int nextId_;
 	private Map<Integer, IBook> bookMap_;
 	private IBookHelper helper_;
 	
 	//constructor for helper
-	public BookMapDAO(IBookHelper helper) {
+	public BookDAO(IBookHelper helper) {
 		if (helper == null ) {
 			throw new IllegalArgumentException("constructor: helper invalid.");
 		}
@@ -29,7 +29,7 @@ public class BookMapDAO implements IBookDAO{
 	}
 	
 	//constructor for bookmap
-	public BookMapDAO(IBookHelper helper, Map<Integer, IBook> bookMap){
+	public BookDAO(IBookHelper helper, Map<Integer, IBook> bookMap){
 		this(helper);
 		if (helper == null){
 			throw new IllegalArgumentException("constructor: bookMap invalid.");
