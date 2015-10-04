@@ -1,4 +1,4 @@
-package lowLevelUT;
+package unitTestingLowLevel;
 
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.mock;
