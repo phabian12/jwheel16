@@ -22,43 +22,39 @@ import library.interfaces.hardware.IPrinter;
 import library.interfaces.hardware.IScanner;
 import library.interfaces.hardware.IScannerListener;
 
-public class BorrowUC_CTL implements ICardReaderListener, 
-									 IScannerListener, 
-									 IBorrowUIListener {
-	
+public class BorrowUC_CTL implements ICardReaderListener, IScannerListener, IBorrowUIListener {
+
 	private ICardReader reader;
-	private IScanner scanner; 
-	private IPrinter printer; 
+	private IScanner scanner;
+	private IPrinter printer;
 	private IDisplay display;
-	//private String state;
+	// private String state;
 	private int scanCount = 0;
 	private IBorrowUI ui;
-	private EBorrowState state; 
+	private EBorrowState state;
 	private IBookDAO bookDAO;
 	private IMemberDAO memberDAO;
 	private ILoanDAO loanDAO;
-	
+
 	private List<IBook> bookList;
 	private List<ILoan> loanList;
 	private IMember borrower;
-	
+
 	private JPanel previous;
 
-
-	public BorrowUC_CTL(ICardReader reader, IScanner scanner, 
-			IPrinter printer, IDisplay display,
-			IBookDAO bookDAO, ILoanDAO loanDAO, IMemberDAO memberDAO ) {
+	public BorrowUC_CTL(ICardReader reader, IScanner scanner, IPrinter printer, IDisplay display, IBookDAO bookDAO,
+			ILoanDAO loanDAO, IMemberDAO memberDAO) {
 
 		this.display = display;
 		this.ui = new BorrowUC_UI(this);
 		state = EBorrowState.CREATED;
 	}
-	
+
 	public void initialise() {
 		previous = display.getDisplay();
-		display.setDisplay((JPanel) ui, "Borrow UI");		
+		display.setDisplay((JPanel) ui, "Borrow UI");
 	}
-	
+
 	public void close() {
 		display.setDisplay(previous, "Main Menu");
 	}
@@ -67,15 +63,12 @@ public class BorrowUC_CTL implements ICardReaderListener,
 	public void cardSwiped(int memberID) {
 		throw new RuntimeException("Not implemented yet");
 	}
-	
-	
-	
+
 	@Override
 	public void bookScanned(int barcode) {
 		throw new RuntimeException("Not implemented yet");
 	}
 
-	
 	private void setState(EBorrowState state) {
 		throw new RuntimeException("Not implemented yet");
 	}
@@ -84,7 +77,7 @@ public class BorrowUC_CTL implements ICardReaderListener,
 	public void cancelled() {
 		close();
 	}
-	
+
 	@Override
 	public void scansCompleted() {
 		throw new RuntimeException("Not implemented yet");
@@ -103,10 +96,11 @@ public class BorrowUC_CTL implements ICardReaderListener,
 	private String buildLoanListDisplay(List<ILoan> loans) {
 		StringBuilder bld = new StringBuilder();
 		for (ILoan ln : loans) {
-			if (bld.length() > 0) bld.append("\n\n");
+			if (bld.length() > 0)
+				bld.append("\n\n");
 			bld.append(ln.toString());
 		}
-		return bld.toString();		
+		return bld.toString();
 	}
 
 }
