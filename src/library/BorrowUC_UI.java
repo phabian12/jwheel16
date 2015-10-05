@@ -19,14 +19,14 @@ public class BorrowUC_UI extends JPanel implements IBorrowUI {
 
 	private static final long serialVersionUID = 1L;
 	@SuppressWarnings("unused")
-	private IBorrowUIListener listener;
-	private EBorrowState state;
-	private Map<EBorrowState,IBorrowUI> panels;
+	private IBorrowUIListener listener_;
+	private EBorrowState state_;
+	private Map<EBorrowState,IBorrowUI> panels_;
 
 	
 	public BorrowUC_UI(IBorrowUIListener listener) {
-		this.listener = listener;
-		this.panels = new HashMap<EBorrowState,IBorrowUI>();		
+		this.listener_ = listener;
+		this.panels_ = new HashMap<EBorrowState,IBorrowUI>();		
 		this.setLayout(new CardLayout());
 
 		addPanel(new SwipeCardPanel(listener),   EBorrowState.INITIALIZED);
@@ -38,7 +38,7 @@ public class BorrowUC_UI extends JPanel implements IBorrowUI {
 	}
 	
 	private void addPanel(ABorrowPanel panel, EBorrowState state) {
-        this.panels.put(state, panel);
+        this.panels_.put(state, panel);
         this.add(panel, state.toString());
  	}
 
@@ -73,76 +73,76 @@ public class BorrowUC_UI extends JPanel implements IBorrowUI {
 		default:
 			throw new RuntimeException("Unknown state");
 		}
-		this.state = state;
+		this.state_ = state;
 	}
 
 
 	@Override
 	public void displayMemberDetails(int memberID, String memberName, String memberPhone) {
-		IBorrowUI ui = panels.get(state);
+		IBorrowUI ui = panels_.get(state_);
 		ui.displayMemberDetails( memberID,  memberName, memberPhone);		
 	}
 
 
 	@Override
 	public void displayOverDueMessage() {
-		IBorrowUI ui = panels.get(state);
+		IBorrowUI ui = panels_.get(state_);
 		ui.displayOverDueMessage();		
 	}
 
 
 	@Override
 	public void displayAtLoanLimitMessage() {
-		IBorrowUI ui = panels.get(state);
+		IBorrowUI ui = panels_.get(state_);
 		ui.displayAtLoanLimitMessage();		
 	}
 
 
 	@Override
 	public void displayOutstandingFineMessage(float amountOwing) {
-		IBorrowUI ui = panels.get(state);
+		IBorrowUI ui = panels_.get(state_);
 		ui.displayOutstandingFineMessage(amountOwing);		
 	}
 
 	
 	@Override
 	public void displayOverFineLimitMessage(float amountOwing) {
-		IBorrowUI ui = panels.get(state);
+		IBorrowUI ui = panels_.get(state_);
 		ui.displayOverFineLimitMessage(amountOwing);				
 	}
 
 	
 	@Override
 	public void displayExistingLoan(String loanDetails) {
-		IBorrowUI ui = panels.get(state);
+		IBorrowUI ui = panels_.get(state_);
 		ui.displayExistingLoan(loanDetails);		
 	}
 
 	
 	@Override
 	public void displayScannedBookDetails(String bookDetails) {
-		IBorrowUI ui = panels.get(state);
+		IBorrowUI ui = panels_.get(state_);
 		ui.displayScannedBookDetails(bookDetails);		
 	}
 
 	
 	@Override
 	public void displayPendingLoan(String loanDetails) {
-		IBorrowUI ui = panels.get(state);
+		IBorrowUI ui = panels_.get(state_);
 		ui.displayPendingLoan(loanDetails);		
 	}
 
 	
 	@Override
 	public void displayConfirmingLoan(String loanDetails) {
-		IBorrowUI ui = panels.get(state);
+		IBorrowUI ui = panels_.get(state_);
 		ui.displayConfirmingLoan(loanDetails);		
 	}
 
 	
 	@Override
 	public void displayErrorMessage(String errorMesg) {
-		IBorrowUI ui = panels.get(state);
+		IBorrowUI ui = panels_.get(state_);
 		ui.displayErrorMessage(errorMesg);		
 	}
 
