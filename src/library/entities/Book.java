@@ -143,4 +143,15 @@ public class Book implements IBook {
 	public void setState(EBookState state) {
 		this.state_ = state;
 	}
+	
+	/* forgot toString on this file
+	 * realised during testing
+	 */
+	@Override
+	  public String toString() {
+	    return "Book ID: " + this.bookID_ + " Author: " + this.author_ +
+	        " Title: " + this.title_;
+	  }
+	
+	
 }
