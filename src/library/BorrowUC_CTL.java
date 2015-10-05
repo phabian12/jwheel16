@@ -212,7 +212,7 @@ public class BorrowUC_CTL implements ICardReaderListener, IScannerListener, IBor
 	      }
 	}
 	
-	private void setState(EBorrowState state) {
+	public void setState(EBorrowState state) {
 		System.out.println("Setting state: " + state);
 		
 		this.state_ = state;
